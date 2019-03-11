@@ -1,0 +1,17 @@
+version: "3"
+services:
+  mysql:
+    image: mysql:5.7.21
+    container_name: mysql
+    command: --init-file /data/application/init.sql
+    volumes:
+        - ./data/init.sql:/data/application/init.sql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: '123456'
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    ports:
+      - "27017:27017"
